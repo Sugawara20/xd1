@@ -144,7 +144,7 @@ fun ProfileScreen(){
                     )}
             }
 
-            Column() {
+            Box() {
                 Row(){
                     Column(modifier = Modifier
                         .height(65.dp)
