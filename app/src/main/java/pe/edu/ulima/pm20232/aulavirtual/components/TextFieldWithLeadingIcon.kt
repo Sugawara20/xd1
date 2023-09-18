@@ -19,9 +19,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray2000
-import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray400
-import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray800
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange400
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange800
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.White400
@@ -53,16 +50,16 @@ fun TextFieldWithLeadingIcon(
             },
             singleLine = true,
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White,
+                backgroundColor = if (isSystemInDarkTheme())Color(0xFF666666) else White400,
                 focusedIndicatorColor = Color.LightGray,
-                unfocusedIndicatorColor = Gray2000,
+                unfocusedIndicatorColor = Orange800
             ),
             visualTransformation = if (isPassword == false) VisualTransformation.None else PasswordVisualTransformation(),
             leadingIcon = {
                 Icon(
                     imageVector = leadingIcon,
                     contentDescription = null,
-                    tint = (if (isSystemInDarkTheme()) White400 else Gray400),
+                    tint = (if (isSystemInDarkTheme()) White400 else Color.Black),
                     modifier = Modifier
                         .padding(4.dp)
                         .size(24.dp)

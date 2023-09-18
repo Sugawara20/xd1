@@ -42,7 +42,7 @@ fun TopScreen(){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Gray2000)
+                .background(if (isSystemInDarkTheme()) Color.Black else Gray1200)
                 .weight(3f)
                 .padding(8.dp),
             contentAlignment = Alignment.TopCenter
@@ -60,18 +60,18 @@ fun TopScreen(){
                     painter = painterResource(id = R.drawable.ic_ulima), // Replace with your SVG resource ID
                     contentDescription = "Universidad de Lima",
                     modifier = Modifier.size(120.dp),
-                    colorFilter = ColorFilter.tint(Orange400),
+                    colorFilter = ColorFilter.tint(if (isSystemInDarkTheme()) White400 else Orange400),
                 )
                 Text1(
                     text = "Gimnasio ULima",
                     textAlign = TextAlign.Center,
-                    color = Gray400,
+                    color = if (isSystemInDarkTheme()) White400 else Color.Black ,
                     //fontSize = 20.sp,
                     modifier =  Modifier.padding(top = 20.dp, bottom = 20.dp),
                         style = MaterialTheme.typography.h4.copy(
                         fontSize = 20.sp,
                         fontFamily = FontFamily(Font(R.font.caslon_classico_sc_regular)),
-                        color = if (isSystemInDarkTheme()) White400 else Orange400 // Apply the custom text color here
+                            color = if (isSystemInDarkTheme()) White400 else Color.Black // Apply the custom text color here
                     )
                 )
             }
@@ -95,8 +95,9 @@ fun LoginForm(
         modifier = Modifier
             .fillMaxSize()
             .padding(top = (screenHeightDp * 0.35).dp,)
-            .background(White400),
-    ) {
+            .background(
+                if (isSystemInDarkTheme()) Color(0xFF666666) else White400
+            ),    ) {
         Box(modifier = Modifier.padding(
             start = (screenWidthDp * 0.125).dp,
             top = (0).dp
@@ -108,7 +109,7 @@ fun LoginForm(
                         (screenHeightDp * 0.40).dp
                     ) // Adjust the size as needed
                     //.border(1.dp, Gray800)
-                    .background(White400)
+                    .background(if (isSystemInDarkTheme()) Color(0xFF999999) else White400)
                     .shadow(
                         elevation = 5.dp,
                         shape = MaterialTheme.shapes.medium,
@@ -120,7 +121,8 @@ fun LoginForm(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Text1(text ="INGRESA  ESTA  INFORMACION", fontWeight = FontWeight.Light, fontSize = 14.sp)
+                    Text1(text ="INGRESA  ESTA  INFORMACION", fontWeight = FontWeight.Light, fontSize = 14.sp,
+                        color = if(isSystemInDarkTheme())Color.Black else White400)
                     TextFieldWithLeadingIcon(
                         leadingIcon = Icons.Default.Person, // Replace with your desired icon
                         placeholder = "Usuario",
